@@ -33,7 +33,10 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/rooms")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://quickstay-web.vercel.app"
+})
 public class RoomController  {
 	
 	private final IRoomService roomService;
