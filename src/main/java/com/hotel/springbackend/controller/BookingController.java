@@ -22,7 +22,10 @@ import com.hotel.springbackend.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://quickstay-web.vercel.app"
+})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/bookings")
