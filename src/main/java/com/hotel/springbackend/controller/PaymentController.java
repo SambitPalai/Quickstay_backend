@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/payment")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://quickstay-web.vercel.app"
+})
 public class PaymentController {
 
     private final IPaymentService paymentService;
