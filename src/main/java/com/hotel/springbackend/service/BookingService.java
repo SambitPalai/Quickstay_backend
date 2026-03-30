@@ -50,14 +50,13 @@ public class BookingService implements IBookingService {
         if (bookingRequest.getCheckOutDate().isBefore(bookingRequest.getCheckInDate())) {
             throw new InvalidBookingRequestException("Check-in date must come before Check-out date.");
         }
-        if (bookingRequest.getCheckOutDate().isBefore(bookingRequest.getCheckInDate())) {
-            throw new InvalidBookingRequestException("Check-in date must come before Check-out date.");
-        }
         bookingRequest.setTotalNumOfGuests(
                 bookingRequest.getNumberOfAdults() +
                 bookingRequest.getNumberOfChildren()
         );
-        Room room = roomService.getRoomById(roomId).get();
+        
+        Room room = roomService.getRoomById(roomId)
+        .orElseThrow(() -> new ResourceNotFoundException("Room not found"));
         
         bookingRequest.setRoomNo(room.getRoomNo());
         
@@ -66,15 +65,10 @@ public class BookingService implements IBookingService {
         if (roomIsAvailable) {
             room.addBooking(bookingRequest);
             bookingRepository.save(bookingRequest);
+            roomRepository.save(room);
         } else {
             throw new InvalidBookingRequestException("Sorry, This room is not available for selected dates.");
         }
-        //  link booking to room + generate confirmation code
-        room.addBooking(bookingRequest);
-        //  save BookedRoom first so it gets an ID
-        bookingRepository.save(bookingRequest);
-        //  save Room so is_booked persists correctly
-        roomRepository.save(room);
         return bookingRequest.getBookingConfirmationCode();
     }
 
