@@ -13,7 +13,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -34,7 +33,8 @@ public class Room {
 	private String roomType;
 	private BigDecimal roomPrice;
 	private boolean isBooked =false;
-	@Lob
+	
+	@Column(columnDefinition = "LONGBLOB")
 	private byte[] photo;
 	
 	@OneToMany(mappedBy="room",fetch = FetchType.LAZY, cascade= CascadeType.ALL)
