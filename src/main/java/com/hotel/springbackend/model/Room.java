@@ -37,7 +37,7 @@ public class Room {
 	@Column(columnDefinition = "bytea")
 	private byte[] photo;
 	
-	@OneToMany(mappedBy="room",fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+	@OneToMany(mappedBy="room",fetch = FetchType.EAGER, cascade= CascadeType.ALL)
 	private List<BookedRoom> bookings;
 	private static final SecureRandom random = new SecureRandom();
 	
