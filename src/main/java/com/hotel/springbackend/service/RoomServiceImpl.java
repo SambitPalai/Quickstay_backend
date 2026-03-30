@@ -82,7 +82,7 @@ public class RoomServiceImpl implements IRoomService{
 	@Override
 	@Transactional
 	public Optional<Room> getRoomById(Long roomId) {
-		return roomRepository.findById(roomId);
+		return roomRepository.findByIdWithBookings(roomId);
 	}
 
 	@Override
