@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/complaints")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173" , "https://quickstay-web.vercel.app"})
 public class ComplaintController {
 
     private final IComplaintService complaintService;
