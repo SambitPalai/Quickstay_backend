@@ -11,6 +11,7 @@ import com.hotel.springbackend.request.ComplaintRequest;
 import com.hotel.springbackend.response.ComplaintResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
