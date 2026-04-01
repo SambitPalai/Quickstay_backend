@@ -86,11 +86,16 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/rooms/delete/**").hasAnyRole("ADMIN","OWNER")
                 .requestMatchers(HttpMethod.GET,    "/bookings/all-bookings").hasAnyRole("ADMIN","OWNER")
                 .requestMatchers(HttpMethod.GET,    "/bookings/user/bookings").hasAnyRole("ADMIN", "OWNER")
+                .requestMatchers(HttpMethod.GET,  "/complaints/all").hasAnyRole("ADMIN","OWNER")
+                .requestMatchers(HttpMethod.GET,  "/complaints/filter").hasAnyRole("ADMIN","OWNER")
+                .requestMatchers(HttpMethod.PUT,  "/complaints/*/status").hasAnyRole("ADMIN","OWNER")
                 // ------- AUNTHENTICATED USERS -------
                 .requestMatchers("/bookings/my-bookings").authenticated()
                 .requestMatchers("/bookings/user/**").authenticated()
                 .requestMatchers("/bookings/room/**").authenticated()
                 .requestMatchers("/bookings/booking/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/complaints/raise").authenticated()
+                .requestMatchers(HttpMethod.GET,  "/complaints/my-complaints").authenticated()
                 .anyRequest().authenticated()
             )
             .userDetailsService(userDetailsService)          // ← THIS was missing
