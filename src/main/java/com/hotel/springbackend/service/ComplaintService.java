@@ -25,6 +25,7 @@ public class ComplaintService implements IComplaintService {
 
     // ── Raise a new complaint ─────────────────────────────────────────────────
     @Override
+    @Transactional
     public ComplaintResponse raiseComplaint(ComplaintRequest request, String userEmail) {
 
         User user = userRepository.findByEmail(userEmail)
@@ -51,6 +52,7 @@ public class ComplaintService implements IComplaintService {
 
     // ── User fetches their own complaints ─────────────────────────────────────
     @Override
+    @Transactional(readOnly = true)
     public List<ComplaintResponse> getMyComplaints(String userEmail) {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found: " + userEmail));
@@ -63,6 +65,7 @@ public class ComplaintService implements IComplaintService {
 
     // ── Admin fetches ALL complaints ──────────────────────────────────────────
     @Override
+    @Transactional(readOnly = true)
     public List<ComplaintResponse> getAllComplaints() {
         return complaintRepository.findAll()
                 .stream()
@@ -72,6 +75,7 @@ public class ComplaintService implements IComplaintService {
 
     // ── Admin updates complaint status ────────────────────────────────────────
     @Override
+    @Transactional
     public ComplaintResponse updateStatus(Long complaintId, Complaint.Status newStatus) {
         Complaint complaint = complaintRepository.findById(complaintId)
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -83,6 +87,7 @@ public class ComplaintService implements IComplaintService {
 
     // ── Admin filters complaints by status ───────────────────────────────────
     @Override
+    @Transactional(readOnly = true)
     public List<ComplaintResponse> getComplaintsByStatus(Complaint.Status status) {
         return complaintRepository.findByStatus(status)
                 .stream()
