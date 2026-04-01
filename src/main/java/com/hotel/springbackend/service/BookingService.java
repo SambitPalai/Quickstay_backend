@@ -9,7 +9,7 @@ import com.hotel.springbackend.model.Room;
 import com.hotel.springbackend.repository.BookingRepository;
 import com.hotel.springbackend.repository.RoomRepository;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
