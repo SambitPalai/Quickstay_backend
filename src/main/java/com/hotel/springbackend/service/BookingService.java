@@ -26,16 +26,19 @@ public class BookingService implements IBookingService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<BookedRoom> getAllBookings() {
         return bookingRepository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public BookedRoom findByBookingConfirmationCode(String confirmationCode) {
         return bookingRepository.findByBookingConfirmationCode(confirmationCode);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<BookedRoom> getBookingsByUserEmail(String email) {
         return bookingRepository.findByGuestEmail(email);
     }
