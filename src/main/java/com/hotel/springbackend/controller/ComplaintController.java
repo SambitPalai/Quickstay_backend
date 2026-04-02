@@ -61,7 +61,7 @@ public class ComplaintController {
 
     // ── ADMIN / OWNER: update complaint status ────────────────────────────────
     // PUT /complaints/{id}/status
-    @PutMapping("/{id}/status")
+    @PatchMapping("/{id}/status")
     public ResponseEntity<ComplaintResponse> updateStatus(
             @PathVariable Long id,
             @RequestBody UpdateStatusRequest request) {
