@@ -65,6 +65,7 @@ public class SecurityConfig {
             
             .authorizeHttpRequests(auth -> auth		
                 // ----- PUBLIC ------------ 
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  
                 .requestMatchers("/auth/register").permitAll()
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/rooms/all-rooms").permitAll()
