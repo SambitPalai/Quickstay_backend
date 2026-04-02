@@ -89,7 +89,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET,    "/bookings/user/bookings").hasAnyRole("ADMIN", "OWNER")
                 .requestMatchers(HttpMethod.GET,  "/complaints/all").hasAnyRole("ADMIN","OWNER")
                 .requestMatchers(HttpMethod.GET,  "/complaints/filter").hasAnyRole("ADMIN","OWNER")
-                .requestMatchers(HttpMethod.PUT,  "/complaints/*/status").hasAnyRole("ADMIN","OWNER")
+                .requestMatchers(HttpMethod.PATCH,  "/complaints/*/status").hasAnyRole("ADMIN","OWNER")
                 // ------- AUNTHENTICATED USERS -------
                 .requestMatchers("/bookings/my-bookings").authenticated()
                 .requestMatchers("/bookings/user/**").authenticated()
