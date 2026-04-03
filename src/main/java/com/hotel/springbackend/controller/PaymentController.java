@@ -21,6 +21,7 @@ import com.hotel.springbackend.repository.UserRepository;
 })
 public class PaymentController {
 
+    private final UserRepository userRepository;
     private final IPaymentService paymentService;
 
     // Step 1: Frontend calls this to get a Razorpay order_id before showing the popup
