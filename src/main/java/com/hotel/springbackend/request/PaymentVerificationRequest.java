@@ -15,8 +15,6 @@ public class PaymentVerificationRequest {
 
     // Booking details to save after verification
     private Long roomId;
-    private String guestFullName;
-    private String guestEmail;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkInDate;
     @JsonFormat(pattern = "yyyy-MM-dd")
