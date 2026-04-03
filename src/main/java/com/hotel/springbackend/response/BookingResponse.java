@@ -24,6 +24,7 @@ public class BookingResponse {
 	private int numOfChildren;
 	private int totalNumOfGuests;
 	private String bookingConfirmationCode;
+	private String roomNo; 
 	private RoomResponse room;
 	
 	public BookingResponse(Long bookingId, LocalDate checkInDate, LocalDate checkOutDate,
