@@ -60,6 +60,8 @@ public class BookingService implements IBookingService {
         
         Room room = roomService.getRoomById(roomId)
         .orElseThrow(() -> new ResourceNotFoundException("Room not found"));
+
+        bookingRequest.setRoomNo(room.getRoomNo());
         
         List<BookedRoom> existingBookings = room.getBookings();
         boolean roomIsAvailable = roomIsAvailable(bookingRequest, existingBookings);
