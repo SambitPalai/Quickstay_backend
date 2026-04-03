@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import com.hotel.springbackend.model.User;
+import com.hotel.springbackend.repository.UserRepository;
 
 @RestController
 @RequiredArgsConstructor
