@@ -50,7 +50,7 @@ public class PaymentService implements IPaymentService {
     }
 
     @Override
-    public String verifyAndBook(PaymentVerificationRequest request) throws Exception {
+    public String verifyAndBook(PaymentVerificationRequest request, String userEmail, String userName) throws Exception {
         // Step 1: Verify Razorpay signature (HMAC SHA256)
         String payload = request.getRazorpayOrderId() + "|" + request.getRazorpayPaymentId();
 
