@@ -72,8 +72,8 @@ public class PaymentService implements IPaymentService {
 
         // Step 2: Signature is valid — now save the booking
         BookedRoom booking = new BookedRoom();
-        booking.setGuestFullName(request.getGuestFullName());
-        booking.setGuestEmail(request.getGuestEmail());
+        booking.setGuestFullName(userName);
+        booking.setGuestEmail(userEmail);
         booking.setCheckInDate(request.getCheckInDate());
         booking.setCheckOutDate(request.getCheckOutDate());
         booking.setNumberOfAdults(request.getNumberOfAdults());
