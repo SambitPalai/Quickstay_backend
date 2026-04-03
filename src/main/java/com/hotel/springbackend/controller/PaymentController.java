@@ -34,9 +34,12 @@ public class PaymentController {
     // Step 2: Frontend calls this after Razorpay popup succeeds,
     //         sending payment proof + booking details
     @PostMapping("/verify-and-book")
-    public ResponseEntity<?> verifyAndBook(@RequestBody PaymentVerificationRequest request) {
+    public ResponseEntity<?> verifyAndBook(@RequestBody PaymentVerificationRequest request, @AuthenticationPrincipal UserDetails currentUser) {
         try {
-            String confirmationCode = paymentService.verifyAndBook(request);
+            User user = userRepository.findByEmail(currentUser.getUsername()).orElseThrow();
+            String confirmationCode = paymentService.verifyAndBook(request,
+                user.getEmail(),     // ← pass from JWT
+                user.getName());
             return ResponseEntity.ok(
                     "Payment verified! Room booked successfully. Confirmation code: " + confirmationCode
             );
