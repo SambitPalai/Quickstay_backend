@@ -55,7 +55,10 @@ public class BookedRoom {
 	
 	@Column(name = "confirmation_code")
 	private String bookingConfirmationCode;
-	
+
+	@Column(name = "room_no")
+	private String roomNo;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "room_Id")
 	private Room room;
