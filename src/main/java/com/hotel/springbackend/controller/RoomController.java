@@ -119,6 +119,7 @@ public class RoomController  {
 	                    booking.getNumberOfChildren(),     
 	                    booking.getTotalNumOfGuests(),
 						booking.getBookingConfirmationCode(),
+						booking.getRoomNo(),
 						null 
 					)).toList();
 		
