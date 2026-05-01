@@ -52,3 +52,5 @@ application:
     jwt:
       secret-key: ${JWT_SECRET}
       expiration: 86400000    # 24 hours in milliseconds 
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,https://quickstay-web.vercel.app,https://quickstayfrontend-ba5dhzmnk-sambitpalai2005-3333s-projects.vercel.app}
